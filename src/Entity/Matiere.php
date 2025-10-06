@@ -33,6 +33,9 @@ class Matiere
     #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'matieres')]
     private Collection $competence;
 
+    #[ORM\ManyToOne(inversedBy: 'matiere')]
+    private ?Note $note = null;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -115,6 +118,18 @@ class Matiere
     public function removeCompetence(Competence $competence): static
     {
         $this->competence->removeElement($competence);
+
+        return $this;
+    }
+
+    public function getNote(): ?Note
+    {
+        return $this->note;
+    }
+
+    public function setNote(?Note $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }
