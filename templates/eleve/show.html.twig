@@ -15,6 +15,8 @@
                 <th>Nom</th>
                 <td>{{ eleve.nom }}</td>
             </tr>
+
+            
             <tr>
                 <th>Prenom</th>
                 <td>{{ eleve.prenom }}</td>
@@ -23,6 +25,15 @@
                 <th>DateNaiss</th>
                 <td>{{ eleve.dateNaiss ? eleve.dateNaiss|date('Y-m-d') : '' }}</td>
             </tr>
+
+            <td  rowspan="8" class="imgEtu">
+					{% set photo = 'images/eleve/'~ eleve.id ~'.jpg' %}
+					<span class="zoom"><img src="{{ asset(photo)}}" title="{{ eleve.prenom ~ " " ~ eleve.nom }}"
+                     alt="{{ eleve.prenom ~ " " ~ eleve.nom }}"/></span></td></tr> </td>
+
+            
+            
+            
         </tbody>
     </table>
 
